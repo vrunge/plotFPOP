@@ -1,0 +1,12 @@
+Package: plotFPOP
+Type: Package
+Title: plot of the functional cost FPOP 1d 2d
+Version: 0.1
+Date: 2017-10-22
+Authors@R: c(person("Vincent Runge", email = "runge.vincent@gmail.com", role = c("aut","cre")))
+Author: Vincent Runge
+Maintainer: Vincent Runge <runge.vincent@gmail.com>
+Description: Changepoint algorithm using dynamic programming with functional pruning. The package provides simple functions and algorithms to plot the functional cost in 1d and 2d. The goal is to give an easy and simple access to the plot in order to better understand the functional cost updates. 
+License: GPL-2
+RoxygenNote: 6.0.1
+Imports: plot3D, cumstats, grDevices, graphics, stats

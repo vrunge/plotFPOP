@@ -1,0 +1,4 @@
+export(data1, data2, fpop1d, fpop2d)
+
+import(graphics, plot3D, grDevices, stats, cumstats)
+
