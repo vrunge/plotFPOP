@@ -9,20 +9,20 @@ fpop2d(data2, beta, precision = 300, circle = FALSE)
 \arguments{
 \item{data2}{matrix of data of dimension 2 x n}
 
-\item{beta}{penalty coefficient, positive number}
+\item{beta}{penalty coefficent, positive number}
 
-\item{precision}{An integer : the number of rows in the matrix for plotting}
+\item{precision}{An integer : the number of rows in the matrix used for the plots}
 
-\item{circle}{An boolean to decide to draw the circle of intersection (green if the region stays, red otherwise)}
+\item{circle}{A boolean to decide to draw the circles of intersection (green if the region stays, red otherwise)}
 }
 \value{
-Display the cost (in the plot window) and the present labels (in the console) at consecutive times
+Plots of the functional cost (in the plot window) and the present labels (in the console) at consecutive times
 }
 \description{
 Displaying the functional cost at consecutive times
 }
 \examples{
-data <- data2(mean1 = 0, mean2 = 0, tau = 1, sigma = 0.5, n=10)
+data <- dataG2(mean1 = 0, mean2 = 0, tau = 1, sigma = 0.5, n=10)
 fpop2d(data, precision = 300, 1, circle = TRUE)
 
 

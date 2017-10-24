@@ -6,7 +6,7 @@ Date: 2017-10-22
 Authors@R: c(person("Vincent Runge", email = "runge.vincent@gmail.com", role = c("aut","cre")))
 Author: Vincent Runge
 Maintainer: Vincent Runge <runge.vincent@gmail.com>
-Description: Changepoint algorithm using dynamic programming with functional pruning. The package provides simple functions and algorithms to plot the functional cost in 1d and 2d. The goal is to give an easy and simple access to the plot in order to better understand the functional cost updates. 
+Description: This package provides plotting functions for dynamic programming changepoint algorithms with penalty using functional pruning. The package contains simple (written in R) functions and algorithms to plot the functional cost in 1d and 2d at consecutive times. The goal is to give an easy and simple access to the shape of the functional cost in order to better understand its updates. Simulation functions are also available in order to simulate segmented data with a gaussian distribution in dimension 1 and 2.
 License: GPL-2
 RoxygenNote: 6.0.1
 Imports: plot3D, cumstats, grDevices, graphics, stats
