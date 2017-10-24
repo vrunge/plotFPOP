@@ -4,20 +4,22 @@
 \alias{fpop1d}
 \title{Functional cost 1d display}
 \usage{
-fpop1d(data1, beta)
+fpop1d(data1, beta, order = FALSE)
 }
 \arguments{
-\item{data1}{Vector of data in dim 1}
+\item{data1}{Vector of data}
 
-\item{beta}{penalty positive number}
+\item{beta}{penalty coefficient, positive number}
+
+\item{order}{a boolean. If true, gives the labels on the real line from left to right}
 }
 \value{
-Display the cost (in the plot window) and the present labels (in the console) at consecutive times
+plots of the functional cost (in the plot window) and the present labels (in the console) at consecutive times. The vertical gray line shows the position of the current added data on the real line
 }
 \description{
-Displaying the functional cost at consecutive time
+Displaying the functional cost at consecutive times
 }
 \examples{
-data <- data1(sigma = 1, n=20)
+data <- dataG1(sigma = 0.5, n=15)
 fpop1d(data,1)
 }

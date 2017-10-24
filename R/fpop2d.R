@@ -3,12 +3,12 @@
 #'
 #' @description Displaying the functional cost at consecutive times
 #' @param data2 matrix of data of dimension 2 x n
-#' @param beta penalty coefficient, positive number
-#' @param precision An integer : the number of rows in the matrix for plotting
-#' @param circle An boolean to decide to draw the circle of intersection (green if the region stays, red otherwise)
-#' @return Display the cost (in the plot window) and the present labels (in the console) at consecutive times
+#' @param beta penalty coefficent, positive number
+#' @param precision An integer : the number of rows in the matrix used for the plots
+#' @param circle A boolean to decide to draw the circles of intersection (green if the region stays, red otherwise)
+#' @return Plots of the functional cost (in the plot window) and the present labels (in the console) at consecutive times
 #' @examples
-#' data <- data2(mean1 = 0, mean2 = 0, tau = 1, sigma = 0.5, n=10)
+#' data <- dataG2(mean1 = 0, mean2 = 0, tau = 1, sigma = 0.5, n=10)
 #' fpop2d(data, precision = 300, 1, circle = TRUE)
 #'
 #'
@@ -80,9 +80,6 @@ fpop2d <- function(data2, beta, precision = 300, circle = FALSE){
 
     cat("present:", vec, "\n")
 
-
-
-
     ##################### affichage
 
     image2D(Mt, lwd = 2, colkey = FALSE, col=cm.colors(n),zlim=c(1,n))
@@ -102,7 +99,6 @@ fpop2d <- function(data2, beta, precision = 300, circle = FALSE){
       Cy <- (Cy - minbis_y)/delta_y
       R2 <- (mt[length(mt)]-mt[vec])/(i-vec+1) - Dx - Dy
 
-
      for(j in 1:length(Cx)){
       {points(Cx[j]+(sqrt(R2[j])/delta_x)*cos(0:100/100*2*pi),Cy[j]+(sqrt(R2[j])/delta_y)*sin(0:100/100*2*pi), type = "l", pch = 20, col = 3,cex = 0.2)}
      }
@@ -117,25 +113,17 @@ fpop2d <- function(data2, beta, precision = 300, circle = FALSE){
       Dy2 <- Dy2 - Cy2*Cy2
       Cx2 <- (Cx2 - minbis_x)/delta_x
       Cy2 <- (Cy2 - minbis_y)/delta_y
-      R22 <- (mt[length(mt)]-mt[vec2])/(i-vec2+1) - Dx2 - Dy2
 
+      if(length(vec2)!=0){
+        R22 <- (mt[length(mt)]-mt[vec2])/(i-vec2+1) - Dx2 - Dy2
       for(j in 1:length(Cx2)){
-        {points(Cx2[j]+(sqrt(R22[j])/delta_x)*cos(0:100/100*2*pi),Cy2[j]+(sqrt(R22[j])/delta_y)*sin(0:100/100*2*pi), type = "l", pch = 20, col = 2,cex = 0.2)}
+        if(R22[j] > 0){points(Cx2[j]+(sqrt(R22[j])/delta_x)*cos(0:100/100*2*pi),Cy2[j]+(sqrt(R22[j])/delta_y)*sin(0:100/100*2*pi), type = "l", pch = 20, col = 2,cex = 0.2)}
+        }
       }
-
-
-
       points(Cx,Cy, type = "p", pch = '+', col = 2)
-
-
-      #draw.circle(0.5,0.5,0.1,nv=100)
     }
 
-
-
   }
-
-
 
 }
 
