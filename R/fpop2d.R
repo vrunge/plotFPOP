@@ -4,15 +4,15 @@
 #' @description Displaying the functional cost at consecutive times
 #' @param data2 matrix of data of dimension 2 x n
 #' @param beta penalty coefficent, positive number
-#' @param precision An integer : the number of rows in the matrix used for the plots
+#' @param nb An integer : the number of rows in the matrix used for the plots
 #' @param circle A boolean to decide to draw the circles of intersection (green if the region stays, red otherwise)
 #' @return Plots of the functional cost (in the plot window) and the present labels (in the console) at consecutive times
 #' @examples
 #' data <- dataG2(mean1 = 0, mean2 = 0, tau = 1, sigma = 0.5, n=10)
-#' fpop2d(data, precision = 300, 1, circle = TRUE)
+#' fpop2d(data, n = 300, 1, circle = TRUE)
 #'
 #'
-fpop2d <- function(data2, beta, precision = 300, circle = FALSE){
+fpop2d <- function(data2, beta, nb = 300, circle = FALSE){
   mt <- -beta
 
   par(mfrow = c(1,1), mar=c(1,1,1,1))
@@ -28,15 +28,15 @@ fpop2d <- function(data2, beta, precision = 300, circle = FALSE){
   minbis_x <- MIN_x-sqrt(beta)/2
   minbis_y <- MIN_y-sqrt(beta)/2
 
-  M_x <- precision
-  M_y <- floor(precision*delta_y/delta_x)
+  M_x <- n
+  M_y <- floor(n*delta_y/delta_x)
   #M_y <- M_x
 
   Mf <- matrix(0,M_x,M_y)
   Mt <- matrix(1,M_x,M_y)
 
   for (i in 1:n){
-  ##################### mat = matrice des valeurs des quadratiques
+  ##################### matrix of the functional cost
     ## + gamma = quadratic function
 
     x <- seq(minbis_x, minbis_x + delta_x, length.out = M_x)
@@ -46,17 +46,17 @@ fpop2d <- function(data2, beta, precision = 300, circle = FALSE){
     Mf <- t(Mf) + (y-data2[2,i])^2
     Mf <- t(Mf)
 
-    ##################### POSITION des mins avant truncature
+    #####################
     vec2 <- unique(c(Mt))
     vec2 <- rev(vec2[order(vec2)])
 
-    ############## trunctature to min + beta
+    ############## global min and truncature
     MIN_global = min(Mf)
     Mf[Mf > MIN_global + beta] <- MIN_global + beta
     Mt[Mf == MIN_global + beta] <- i+1
     ##############
 
-    ##################### POSITION des mins
+    ##################### position of the local minima
     vec <- unique(c(Mt))
     vec <- rev(vec[order(vec)])
     vec <- vec[-1]
@@ -80,7 +80,7 @@ fpop2d <- function(data2, beta, precision = 300, circle = FALSE){
 
     cat("present:", vec, "\n")
 
-    ##################### affichage
+    ##################### plot
 
     image2D(Mt, lwd = 2, colkey = FALSE, col=cm.colors(n),zlim=c(1,n))
 

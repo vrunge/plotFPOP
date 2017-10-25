@@ -4,14 +4,14 @@
 \alias{fpop2d}
 \title{Functional cost 2d display at level beta}
 \usage{
-fpop2d(data2, beta, precision = 300, circle = FALSE)
+fpop2d(data2, beta, nb = 300, circle = FALSE)
 }
 \arguments{
 \item{data2}{matrix of data of dimension 2 x n}
 
 \item{beta}{penalty coefficent, positive number}
 
-\item{precision}{An integer : the number of rows in the matrix used for the plots}
+\item{nb}{An integer : the number of rows in the matrix used for the plots}
 
 \item{circle}{A boolean to decide to draw the circles of intersection (green if the region stays, red otherwise)}
 }
@@ -23,7 +23,7 @@ Displaying the functional cost at consecutive times
 }
 \examples{
 data <- dataG2(mean1 = 0, mean2 = 0, tau = 1, sigma = 0.5, n=10)
-fpop2d(data, precision = 300, 1, circle = TRUE)
+fpop2d(data, n = 300, 1, circle = TRUE)
 
 
 }

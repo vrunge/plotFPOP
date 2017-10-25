@@ -4,14 +4,16 @@
 \alias{fpop1d}
 \title{Functional cost 1d display}
 \usage{
-fpop1d(data1, beta, order = FALSE)
+fpop1d(data1, beta, nb = 2000, order = FALSE)
 }
 \arguments{
 \item{data1}{Vector of data}
 
 \item{beta}{penalty coefficient, positive number}
 
-\item{order}{a boolean. If true, gives the labels on the real line from left to right}
+\item{nb}{An integer : the number of elements in the vector for the x-axix of the plot}
+
+\item{order}{a boolean. If true,it displays the labels on the real line from left to right}
 }
 \value{
 plots of the functional cost (in the plot window) and the present labels (in the console) at consecutive times. The vertical gray line shows the position of the current added data on the real line
