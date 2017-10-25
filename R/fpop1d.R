@@ -4,13 +4,14 @@
 #' @description Displaying the functional cost at consecutive times
 #' @param data1 Vector of data
 #' @param beta penalty coefficient, positive number
-#' @param order a boolean. If true, gives the labels on the real line from left to right
+#' @param nb An integer : the number of elements in the vector for the x-axix of the plot
+#' @param order a boolean. If true,it displays the labels on the real line from left to right
 #' @return plots of the functional cost (in the plot window) and the present labels (in the console) at consecutive times. The vertical gray line shows the position of the current added data on the real line
 #' @examples
 #' data <- dataG1(sigma = 0.5, n=15)
 #' fpop1d(data,1)
 
-fpop1d <- function(data1, beta, order = FALSE){
+fpop1d <- function(data1, beta, nb = 2000, order = FALSE){
   mt <- 0
   par(mfrow = c(1,1), mar=c(1,1,1,1))
 
@@ -21,18 +22,18 @@ fpop1d <- function(data1, beta, order = FALSE){
   delta_y <- MAX_y - MIN_y + sqrt(beta)
   minbis_y <- MIN_y-sqrt(beta)/2
 
-  N <- 2000
+  N <- nb
   vec <- seq(minbis_y,minbis_y+delta_y, length.out = N)
   quadratics <- rep(0,length(vec))
   tau <- rep(1,length(vec))
   #M_y <- M_x
 
   for (i in 1:n){
-    ##################### mat = matrice des valeurs des quadratiques
+    ##################### quadratics = matrix of the functional cost
     ## + gamma = quadratic function
     quadratics <- quadratics + (vec-data1[i])^2
 
-    ##################### POSITION du min global et truncature
+    ##################### global min and truncature
     minimum = min(quadratics)
     tau[quadratics > minimum + beta] <- i+1
     quadratics[quadratics > minimum + beta] <- minimum + beta
@@ -53,9 +54,4 @@ fpop1d <- function(data1, beta, order = FALSE){
     par(new = FALSE)
   }
 
-
 }
-
-
-
-#remplacer plot par point -> avec   for(j in 1:length(vec))

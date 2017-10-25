@@ -1,8 +1,8 @@
 ---
 output:
-  word_document: default
-  pdf_document: default
   html_document: default
+  pdf_document: default
+  word_document: default
 ---
 
 <!-- 
@@ -75,7 +75,7 @@ This function 'fpop1d' returns consecutive plots and consecutive vectors contain
 
 ```{r}
 data <- dataG2(mean1 = 0, mean2 = 0, tau = 1, sigma = 0.5, n=5)
-fpop2d(data, precision = 300, 1, circle = TRUE)
+fpop2d(data, nb = 300, 1, circle = TRUE)
 ```
 
 This function 'fpop2d' shows the shape of the functional cost in dimension 2 at level 'minimum of this function' + beta. Each color represents a different label. Argument 'precision' is used to force the size of the matrix to plot. The boolean 'circle', if set to true, is used to display the circles of intersection at each time step. 
