@@ -28,8 +28,8 @@ fpop2d <- function(data2, beta, nb = 300, circle = FALSE){
   minbis_x <- MIN_x-sqrt(beta)/2
   minbis_y <- MIN_y-sqrt(beta)/2
 
-  M_x <- n
-  M_y <- floor(n*delta_y/delta_x)
+  M_x <- nb
+  M_y <- floor(nb*delta_y/delta_x)
   #M_y <- M_x
 
   Mf <- matrix(0,M_x,M_y)
