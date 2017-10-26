@@ -50,7 +50,7 @@ fpop1d <- function(data1, beta, nb = 2000, order = FALSE){
       plot(vec[tauPosition[k]:(tauPosition[k+1]-1)],quadratics[tauPosition[k]:(tauPosition[k+1]-1)],xlim=c(minbis_y,minbis_y+delta_y), type = 'l',ylim = c(min,max), col=tau[tauPosition[k]],lwd = 2)
       par(new = TRUE)
     }
-    abline(a =-data1[i]*10000, b=10000, col = "lightgray")
+    abline(v =data1[i], col = "lightgray")
     par(new = FALSE)
   }
 

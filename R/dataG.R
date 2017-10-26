@@ -47,3 +47,24 @@ dataG2 <- function(mean1=c(0,1,1,0), mean2=c(0,0,1,1), tau=c(0.25,0.5,0.75,1), s
   }
   return(y)
 }
+
+
+#'
+#' data in dimension 1 with no pruned last changepoint candidate
+#'
+#' @description Generating data in dimension 1 with no pruning
+#' @param n length of the vector
+#' @param beta the penalty coefficient (use the same beta in function fpop1d)
+#' @return A vector of data of length n
+#' @examples
+#' data <- dataAll(n = 10, beta = 2)
+#' fpop1d(data, beta = 2)
+#'
+#'
+dataAll <- function(n, beta = 1){
+  v <- rep(0,n)
+  for(i in 2:n){v[i] <- sqrt(beta/n)*(sqrt(n-1)-sqrt(i*(n-i))+sqrt((i-1)*(n-i+1)))}
+  return(v)
+}
+
+
