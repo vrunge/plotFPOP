@@ -1,4 +1,4 @@
-export(dataG1, dataG2, fpop1d, fpop2d)
+export(dataG1, dataG2, dataAll, fpop1d, fpop2d)
 
 import(graphics, plot3D, grDevices, stats, cumstats)
 
